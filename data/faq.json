@@ -1,0 +1,132 @@
+{
+  "negocio": "Óptica Visión Clara",
+  "nota": "Negocio ficticio. Precios y datos inventados para la demostración.",
+  "faq": [
+    {
+      "id": "horario",
+      "pregunta": "¿Cuál es el horario de atención?",
+      "respuesta": "Atendemos de lunes a sábado de 9:00 a 20:00 y los domingos de 10:00 a 14:00.",
+      "palabras_clave": ["horario", "abierto", "cierran", "domingo", "sabado"],
+      "ejemplos": ["a que hora abren", "atienden el domingo", "hasta que hora estan abiertos"]
+    },
+    {
+      "id": "ubicacion",
+      "pregunta": "¿Dónde están ubicados?",
+      "respuesta": "Estamos en Av. Ficticia 123, Miraflores, Lima, frente al parque central.",
+      "palabras_clave": ["direccion", "ubicacion", "donde", "local", "tienda"],
+      "ejemplos": ["donde queda la tienda", "cual es la direccion", "como llego al local"]
+    },
+    {
+      "id": "examen_vista",
+      "pregunta": "¿Hacen examen de la vista?",
+      "respuesta": "Sí. El examen visual computarizado cuesta S/ 30 y es gratis si compras tus lentes con nosotros. Dura unos 20 minutos.",
+      "palabras_clave": ["examen", "medida", "vista", "optometra", "graduacion"],
+      "ejemplos": ["hacen examen de la vista", "cuanto cuesta medirme la vista", "necesito saber mi medida"]
+    },
+    {
+      "id": "cita",
+      "pregunta": "¿Cómo separo una cita?",
+      "respuesta": "Puedes separar tu cita respondiendo con tu nombre, el día y la hora que prefieres. También atendemos sin cita según disponibilidad.",
+      "palabras_clave": ["cita", "reservar", "separar", "agendar", "turno"],
+      "ejemplos": ["quiero separar una cita", "puedo agendar para manana", "necesito un turno"]
+    },
+    {
+      "id": "precio_lentes",
+      "pregunta": "¿Cuánto cuestan los lentes de medida?",
+      "respuesta": "Los lentes de medida completos (montura + lunas) empiezan en S/ 149. Con lunas antirreflejo desde S/ 219.",
+      "palabras_clave": ["lente", "anteojo", "gafa", "montura", "luna"],
+      "ejemplos": ["cuanto cuestan los lentes", "precio de anteojos con medida", "que valen las monturas"]
+    },
+    {
+      "id": "lentes_contacto",
+      "pregunta": "¿Venden lentes de contacto?",
+      "respuesta": "Sí, lentes de contacto blandos mensuales desde S/ 89 la caja y de colores desde S/ 99. Para la primera compra pedimos examen de adaptación.",
+      "palabras_clave": ["contacto", "pupilente", "color", "blando"],
+      "ejemplos": ["tienen lentes de contacto", "venden pupilentes de color", "cuanto cuesta la caja de lentes de contacto"]
+    },
+    {
+      "id": "lunas_blue",
+      "pregunta": "¿Tienen lunas con filtro de luz azul?",
+      "respuesta": "Sí, las lunas con filtro de luz azul para pantallas cuestan S/ 90 adicionales sobre la luna base.",
+      "palabras_clave": ["azul", "filtro", "pantalla", "computadora", "blue"],
+      "ejemplos": ["tienen filtro de luz azul", "lunas para la computadora", "lentes para pantallas"]
+    },
+    {
+      "id": "tiempo_entrega",
+      "pregunta": "¿En cuánto tiempo entregan los lentes?",
+      "respuesta": "Las lunas simples están listas en 48 horas. Las progresivas o con tratamientos especiales tardan de 5 a 7 días hábiles.",
+      "palabras_clave": ["entrega", "demora", "listo", "tiempo", "dia"],
+      "ejemplos": ["en cuanto tiempo estan listos", "cuanto demoran mis lentes", "cuando me entregan"]
+    },
+    {
+      "id": "pago",
+      "pregunta": "¿Qué medios de pago aceptan?",
+      "respuesta": "Aceptamos efectivo, tarjetas de débito y crédito, Yape y Plin. Con tarjeta de crédito puedes pagar hasta en 3 cuotas sin intereses.",
+      "palabras_clave": ["pago", "pagar", "tarjeta", "yape", "plin", "cuota", "efectivo"],
+      "ejemplos": ["aceptan yape", "puedo pagar con tarjeta", "se puede pagar en cuotas"]
+    },
+    {
+      "id": "garantia",
+      "pregunta": "¿Los lentes tienen garantía?",
+      "respuesta": "Las monturas tienen 6 meses de garantía por defectos de fábrica y las lunas 3 meses. No cubre rayones ni golpes.",
+      "palabras_clave": ["garantia", "defecto", "falla", "fabrica"],
+      "ejemplos": ["tienen garantia", "mis lentes vinieron fallados", "cubre defectos de fabrica"]
+    },
+    {
+      "id": "reparacion",
+      "pregunta": "¿Reparan lentes?",
+      "respuesta": "Sí. Ajustes y cambio de plaquetas son gratis. Soldadura de montura desde S/ 25, lista en 24 horas.",
+      "palabras_clave": ["reparar", "arreglo", "roto", "soldar", "ajuste", "plaqueta"],
+      "ejemplos": ["se me rompio la montura", "arreglan lentes", "pueden ajustar mis anteojos"]
+    },
+    {
+      "id": "seguro",
+      "pregunta": "¿Trabajan con seguros o EPS?",
+      "respuesta": "Trabajamos con reembolso: te entregamos boleta y receta detallada para que la presentes a tu seguro o EPS.",
+      "palabras_clave": ["seguro", "eps", "reembolso", "aseguradora"],
+      "ejemplos": ["aceptan seguro", "trabajan con eps", "me dan boleta para reembolso"]
+    },
+    {
+      "id": "ninos",
+      "pregunta": "¿Atienden a niños?",
+      "respuesta": "Sí, atendemos a niños desde los 4 años y tenemos monturas flexibles para ellos desde S/ 99.",
+      "palabras_clave": ["nino", "nina", "hijo", "hija", "infantil"],
+      "ejemplos": ["atienden a ninos", "mi hijo necesita lentes", "tienen monturas para ninas"]
+    },
+    {
+      "id": "delivery",
+      "pregunta": "¿Hacen envíos a domicilio?",
+      "respuesta": "Sí, enviamos a todo Lima Metropolitana por S/ 10 y es gratis en compras mayores a S/ 250. A provincias por agencia.",
+      "palabras_clave": ["envio", "delivery", "domicilio", "provincia", "enviar"],
+      "ejemplos": ["hacen delivery", "envian a provincia", "me lo pueden mandar a mi casa"]
+    },
+    {
+      "id": "promociones",
+      "pregunta": "¿Tienen promociones?",
+      "respuesta": "Este mes: 2x1 en monturas seleccionadas y 20 % de descuento en lunas antirreflejo presentando tu DNI.",
+      "palabras_clave": ["promocion", "descuento", "oferta", "2x1"],
+      "ejemplos": ["tienen alguna promocion", "hay descuentos", "que ofertas hay este mes"]
+    },
+    {
+      "id": "lentes_sol",
+      "pregunta": "¿Venden lentes de sol con medida?",
+      "respuesta": "Sí, lentes de sol con tu medida y protección UV400 desde S/ 259.",
+      "palabras_clave": ["sol", "uv", "polarizado", "oscuro"],
+      "ejemplos": ["tienen lentes de sol", "puedo hacer lentes de sol con medida", "venden polarizados"]
+    },
+    {
+      "id": "progresivos",
+      "pregunta": "¿Hacen lentes progresivos o bifocales?",
+      "respuesta": "Sí, lunas progresivas desde S/ 390 y bifocales desde S/ 180. Te recomendamos examen previo para ajustar bien la graduación.",
+      "palabras_clave": ["progresivo", "bifocal", "multifocal", "cerca", "lejos"],
+      "ejemplos": ["hacen lentes progresivos", "necesito bifocales", "lentes para ver de cerca y de lejos"]
+    },
+    {
+      "id": "receta_externa",
+      "pregunta": "¿Puedo traer mi receta de otro oftalmólogo?",
+      "respuesta": "Sí, trabajamos con recetas externas de hasta 12 meses de antigüedad.",
+      "palabras_clave": ["receta", "oftalmologo", "externa", "otro"],
+      "ejemplos": ["tengo receta de otro medico", "puedo traer mi receta", "sirve mi receta del oftalmologo"]
+    }
+  ]
+}
