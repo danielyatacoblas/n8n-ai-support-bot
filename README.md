@@ -40,6 +40,12 @@ flowchart TD
 
 ---
 
+## Arquitectura
+
+<p align="center"><img src="docs/arquitectura.png" alt="Arquitectura: entradas, pasos dentro de n8n y salidas" width="900"></p>
+
+---
+
 ## Demo
 
 <!-- VIDEO: arrastra aquí el .mp4 al editar el README en GitHub y deja solo la URL que genera. -->
@@ -58,6 +64,15 @@ base, deriva al pedir un asesor y el panel muestra qué decidió el flujo.</i></
 3. **Deriva a una persona** cuando el cliente pide un asesor, reclama o el bot no entiende dos veces seguidas. Avisa al grupo del equipo con el chat, el nombre y el último mensaje.
 4. **Se calla mientras el asesor atiende.** Durante 24 horas no interrumpe esa conversación; el cliente puede volver al bot escribiendo `menu`.
 5. **Registra todo** en Google Sheets: mensaje, decisión, intención y puntaje, para ver qué preguntan y qué falta en la base.
+
+---
+
+## Pruebas
+
+<p align="center"><img src="docs/pruebas.png" alt="Resultados de las pruebas automáticas y de la verificación en n8n real" width="900"></p>
+
+La integración continua corre todos los tests en cada push. Lo de la columna
+derecha se verificó importando los workflows en n8n 2.40 con Docker.
 
 ---
 
