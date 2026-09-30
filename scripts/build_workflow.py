@@ -21,6 +21,8 @@ from pathlib import Path
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
+from diseno_canvas import acomodar  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 FAQ = ROOT / "data" / "faq.json"
 JS = ROOT / "workflows" / "src" / "responder_mensaje.js"
@@ -87,6 +89,7 @@ def _regla_texto(campo: str, valor: str, cid: str, salida: str) -> dict:
         "renameOutput": True, "outputKey": salida}
 
 
+@acomodar
 def build_demo(js: str) -> dict:
     """Webhook → Decidir respuesta → Responder. Sin ninguna credencial."""
     nodes = [
@@ -116,6 +119,7 @@ def build_demo(js: str) -> dict:
     }
 
 
+@acomodar
 def build_prod(js: str, negocio: str) -> dict:
     """Telegram → decidir → (IA | texto fijo | derivar a un asesor) + log."""
     chat_cliente = "={{ $('Decidir respuesta').item.json.chat_id }}"
