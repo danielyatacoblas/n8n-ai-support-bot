@@ -46,6 +46,84 @@ flowchart TD
 
 ---
 
+## El workflow en n8n
+
+<p align="center"><img src="docs/workflow_n8n.png" alt="Workflow de producción abierto en el editor de n8n" width="900"></p>
+
+<p align="center"><i>Captura del editor de n8n 2.40 con <code>workflows/bot_produccion.json</code> importado.
+Los triángulos rojos solo indican credenciales por conectar (Google, Telegram, IA).</i></p>
+
+### Paso a paso: un mensaje de principio a fin, incluido el respaldo cuando la IA falla
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Cliente
+    participant T as Telegram
+    participant D as Code · Decidir respuesta
+    participant M as workflowStaticData
+    participant IA as Basic LLM Chain
+    participant E as Grupo del equipo
+    C->>T: "¿aceptan Yape?"
+    T->>D: Telegram Trigger
+    D->>M: ¿un asesor tiene este chat?
+    M-->>D: no
+    D->>D: sinónimos + raíz → FAQ «pago», puntaje 4
+    D->>IA: pregunta + las 3 FAQ más cercanas
+    alt la IA responde
+        IA-->>T: texto redactado solo con el contexto
+    else la IA falla (sin saldo, caída)
+        IA-->>T: salida de error → respuesta de la base tal cual
+    end
+    T-->>C: respuesta
+    C->>T: "quiero hablar con un asesor"
+    T->>D: Telegram Trigger
+    D->>M: guardar: chat derivado (24 h)
+    D->>E: aviso con chat, nombre y último mensaje
+    C->>T: "¿y el horario?"
+    T->>D: Telegram Trigger
+    D->>M: ¿un asesor tiene este chat?
+    M-->>D: sí → el bot no responde
+```
+
+### Técnicas de n8n que usa
+
+**Bot de atención · producción (Telegram + IA)** · 13 nodos
+
+| Técnica de n8n | Para qué se usa aquí |
+| --- | --- |
+| Disparo por eventos (webhook o trigger de la app) | reacciona al instante, sin revisar cada tanto |
+| Memoria persistente (workflowStaticData) | recuerda estado entre ejecuciones sin base de datos |
+| Switch con salidas con nombre | cada decisión tiene su rama legible en el canvas |
+| Salida de error del nodo (On Error → error output) | si un servicio falla, el flujo sigue por otra rama |
+| Nodos de IA de n8n (LangChain) | la IA es un paso del flujo, con su modelo conectado aparte |
+| Modelo de IA como sub-nodo intercambiable | se cambia de proveedor sin tocar el resto del flujo |
+| Lectura de otros nodos por nombre ($('Nodo')) | usa datos de pasos anteriores aunque $input traiga otra cosa |
+
+<details><summary>Nodo por nodo</summary>
+
+| Nodo | Tipo | Configuración |
+| --- | --- | --- |
+| Telegram · Mensaje entrante | Telegram Trigger | — |
+| Decidir respuesta | Code (JavaScript) | 554 líneas generadas desde `workflows/src/` |
+| ¿Qué hacer? | Switch | — |
+| ¿Respuesta de la base? | If | Saludos, aclaraciones y avisos se envían tal cual; las respuestas de la base pasan por la IA para sonar naturales. |
+| IA · Redactar respuesta | Basic LLM Chain | salida de error. Si la IA falla, la rama de error envía la respuesta de la base sin reescribir: el cliente nunca se queda sin respuesta. |
+| Modelo de IA | OpenAI Chat Model | Intercambiable por cualquier otro modelo de chat de n8n (Anthropic, Gemini, Ollama) sin tocar el resto del flujo. |
+| Telegram · Enviar respuesta IA | Telegram | — |
+| Telegram · Enviar respuesta fija | Telegram | — |
+| Telegram · Avisar al cliente | Telegram | — |
+| Telegram · Avisar al equipo | Telegram | ID del grupo de Telegram donde están los asesores. |
+| Asesor a cargo · no responder | No Operation | — |
+| Fila de registro | Edit Fields (Set) | — |
+| Sheets · Registrar conversación | Google Sheets | operación `append`, pestaña `Conversaciones`. Columnas: fecha, chat_id, mensaje, accion, intencion, puntaje |
+
+</details>
+
+<sub>Tablas generadas del JSON del workflow con <code>python scripts/documentar_workflow.py workflows/bot_produccion.json</code>.</sub>
+
+---
+
 ## Demo
 
 <!-- VIDEO: arrastra aquí el .mp4 al editar el README en GitHub y deja solo la URL que genera. -->
@@ -231,9 +309,31 @@ gitGraph
    commit id: "feat: draw the Git Flow history as a Mermaid ..."
    checkout develop
    merge feature/diagrama-git
+   branch docs/diagrama-git-flow
+   checkout docs/diagrama-git-flow
+   commit id: "docs: show the branch history as a gitGraph i..."
+   checkout develop
+   merge docs/diagrama-git-flow
+   branch release/v1.1.1
+   checkout release/v1.1.1
+   commit id: "chore(release): prepare v1.1.1"
+   checkout main
+   merge release/v1.1.1 tag: "v1.1.1"
+   checkout develop
+   merge release/v1.1.1
+   branch feature/canvas-ordenado
+   checkout feature/canvas-ordenado
+   commit id: "feat: lay out the canvas from the workflow co..."
+   checkout develop
+   merge feature/canvas-ordenado
+   branch feature/documentar-workflow
+   checkout feature/documentar-workflow
+   commit id: "feat: document the n8n techniques each workfl..."
+   checkout develop
+   merge feature/documentar-workflow
 ```
 
-<p align="center"><i>Historial real del repositorio hasta v1.1.0, generado con
+<p align="center"><i>Historial real del repositorio, generado con
 <code>python scripts/diagrama_git.py</code>.</i></p>
 
 | Rama | Para qué |
