@@ -155,6 +155,87 @@ integración, y una rama por cambio. Los merges son `--no-ff` para que cada
 funcionalidad quede como un bloque legible en el historial, y cada versión
 lleva su tag.
 
+```mermaid
+gitGraph
+   commit id: "chore: set up the repository"
+   branch develop
+   checkout develop
+   branch feature/base-conocimiento
+   checkout feature/base-conocimiento
+   commit id: "feat: add the knowledge base of the demo opti..."
+   commit id: "test: add 48 hand-labelled customer messages"
+   checkout develop
+   merge feature/base-conocimiento
+   branch feature/motor-decision
+   checkout feature/motor-decision
+   commit id: "feat: decide whether to answer, hand off or s..."
+   commit id: "test: cover every decision the bot makes"
+   checkout develop
+   merge feature/motor-decision
+   branch feature/nodo-n8n
+   checkout feature/nodo-n8n
+   commit id: "feat: port the decision logic to the n8n Code..."
+   commit id: "test: run the n8n node outside n8n and compar..."
+   checkout develop
+   merge feature/nodo-n8n
+   branch feature/workflows
+   checkout feature/workflows
+   commit id: "feat: build the demo and production workflows..."
+   commit id: "test: check the generated workflows can be im..."
+   checkout develop
+   merge feature/workflows
+   branch feature/chat-demo
+   checkout feature/chat-demo
+   commit id: "feat: add a web chat to try the bot with or w..."
+   commit id: "docs: add a screenshot of the chat connected ..."
+   checkout develop
+   merge feature/chat-demo
+   branch feature/evaluacion
+   checkout feature/evaluacion
+   commit id: "feat: measure accuracy against the labelled c..."
+   commit id: "test: fail the build if accuracy drops below ..."
+   checkout develop
+   merge feature/evaluacion
+   branch chore/ci
+   checkout chore/ci
+   commit id: "chore: run tests and accuracy on every push a..."
+   checkout develop
+   merge chore/ci
+   branch docs/documentacion
+   checkout docs/documentacion
+   commit id: "docs: explain what the bot solves before how ..."
+   commit id: "docs: add the production setup guide"
+   checkout develop
+   merge docs/documentacion
+   branch release/v1.0.0
+   checkout release/v1.0.0
+   commit id: "chore(release): prepare v1.0.0"
+   checkout main
+   merge release/v1.0.0 tag: "v1.0.0"
+   checkout develop
+   merge release/v1.0.0
+   branch docs/imagenes-readme
+   checkout docs/imagenes-readme
+   commit id: "docs: add architecture and test result images..."
+   checkout develop
+   merge docs/imagenes-readme
+   branch release/v1.1.0
+   checkout release/v1.1.0
+   commit id: "chore(release): prepare v1.1.0"
+   checkout main
+   merge release/v1.1.0 tag: "v1.1.0"
+   checkout develop
+   merge release/v1.1.0
+   branch feature/diagrama-git
+   checkout feature/diagrama-git
+   commit id: "feat: draw the Git Flow history as a Mermaid ..."
+   checkout develop
+   merge feature/diagrama-git
+```
+
+<p align="center"><i>Historial real del repositorio hasta v1.1.0, generado con
+<code>python scripts/diagrama_git.py</code>.</i></p>
+
 | Rama | Para qué |
 | --- | --- |
 | `main` | Solo versiones liberadas. Cada merge lleva su tag. |
