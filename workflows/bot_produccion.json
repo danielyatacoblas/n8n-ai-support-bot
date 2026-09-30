@@ -15,7 +15,7 @@
       "typeVersion": 1.2,
       "position": [
         0,
-        300
+        0
       ],
       "webhookId": "bot-atencion-telegram"
     },
@@ -28,8 +28,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        240,
-        300
+        280,
+        0
       ]
     },
     {
@@ -96,8 +96,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        480,
-        300
+        560,
+        0
       ]
     },
     {
@@ -129,8 +129,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        720,
-        100
+        840,
+        0
       ],
       "notes": "Saludos, aclaraciones y avisos se envían tal cual; las respuestas de la base pasan por la IA para sonar naturales."
     },
@@ -151,7 +151,7 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        960,
+        1120,
         0
       ],
       "onError": "continueErrorOutput",
@@ -174,7 +174,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        960,
+        1120,
         200
       ],
       "notes": "Intercambiable por cualquier otro modelo de chat de n8n (Anthropic, Gemini, Ollama) sin tocar el resto del flujo."
@@ -192,7 +192,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1200,
+        1540,
         0
       ]
     },
@@ -209,8 +209,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1200,
-        200
+        1120,
+        400
       ]
     },
     {
@@ -226,8 +226,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        720,
-        400
+        840,
+        200
       ]
     },
     {
@@ -243,8 +243,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        720,
-        560
+        840,
+        400
       ],
       "notes": "ID del grupo de Telegram donde están los asesores."
     },
@@ -255,8 +255,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        720,
-        720
+        840,
+        600
       ]
     },
     {
@@ -308,8 +308,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        480,
-        700
+        560,
+        200
       ]
     },
     {
@@ -336,8 +336,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        720,
-        880
+        840,
+        800
       ],
       "notes": "Columnas: fecha, chat_id, mensaje, accion, intencion, puntaje"
     }
